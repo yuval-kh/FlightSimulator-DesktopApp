@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="FlightSimulator.LineChart_view"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             xmlns:oxy="http://oxyplot.org/wpf"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" >
+    <Grid Background="White" x:Name="_grid" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="1" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="1" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+            <oxy:Plot x:Name="plot" TitleFontSize="10" Title="Hello" Margin="0,0,20,0" >
+                <oxy:Plot.Series>
+                    <oxy:LineSeries ItemsSource="{Binding VM_list}"/>
+                </oxy:Plot.Series>
+            </oxy:Plot>
+        <Rectangle Grid.Row="1" Grid.ColumnSpan="3" Fill="Gray"/>
+        <Rectangle Grid.Column="1" Grid.RowSpan="3" Fill="Gray"/>
+        <oxy:Plot x:Name="plotCorrlated" Grid.Row="0" Grid.Column="2"  Margin="0,0,20,0"
+                      Title="{Binding VM_CorralatedName}" TitleFontSize="10" >
+                <oxy:Plot.Series>
+                    <oxy:LineSeries ItemsSource="{Binding VM_CorralatedList}" />
+                </oxy:Plot.Series>
+            </oxy:Plot>
+        <oxy:Plot x:Name="linear_reg" Grid.Row="2" Grid.Column="0"  Margin="0,0,20,0" 
+                      Title="Linear regression" TitleFontSize="10" >
+                <oxy:LineSeries x:Name="A" ItemsSource="{Binding VM_lineRegList}" LineStyle="Automatic"  Color="Blue"/>
+                <oxy:LineSeries x:Name="B" ItemsSource="{Binding VM_points}" LineStyle="None"  
+                             MarkerType="Circle" MarkerSize="2" MarkerFill="Black"/>
+            </oxy:Plot>
+            <ListView x:Name="lv_charts" Grid.Row="2" Grid.Column="3" Margin="10" ItemsSource="{Binding VM_names}" SelectionChanged="ListView_SelectionChanged" />
+    </Grid>
+</UserControl>
