@@ -63,7 +63,7 @@ The flight data receive via *.txt* file, also this project heavily controlled by
 - Download [flightSimulator](https://www.flightgear.org/) 
 - open app --> settings --> at Additional Settings past:
 	> --generic=socket,in,10,127.0.0.1,5400,tcp,playback_small
-	--fmd=null
+	--fdm=null
 - when running the simulation hit **fly** button on the lower left corner.
 - All the **CSV** files must be without labels 
 - before using the app the user must start the flight gear simulation via the menu on the right side.
